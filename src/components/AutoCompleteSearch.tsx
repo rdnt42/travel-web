@@ -8,7 +8,7 @@ import {AutoComplete} from 'primereact/autocomplete';
 import {useEffect, useState} from "react";
 import {CityService} from "../service/CityService";
 
-export const Search = () => {
+export const AutoCompleteSearch = () => {
     const [selectedCity, setSelectedCity] = useState<any>(null);
     const [filteredCities, setFilteredCities] = useState<any>(null);
     const [cities, setCities] = useState<any>([]);
@@ -47,7 +47,7 @@ export const Search = () => {
 
     return (
         <div className="card">
-            <h5>Демо выбора</h5>
+            <h4>Город отправления</h4>
             <AutoComplete value={selectedCity} suggestions={filteredCities} completeMethod={searchCity} field="name"
                           dropdown forceSelection itemTemplate={itemTemplate}
                           onChange={(e) => setSelectedCity(e.value)} aria-label="Cities"/>
