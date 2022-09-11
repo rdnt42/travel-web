@@ -5,8 +5,9 @@ import 'primeflex/primeflex.css';
 import '../index.css';
 
 import {AutoComplete} from 'primereact/autocomplete';
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {CityService} from "../service/CityService";
+import {SearchContext} from "../context/ContextService";
 
 export const AutoCompleteSearch = () => {
     const [selectedCity, setSelectedCity] = useState<any>(null);
@@ -15,10 +16,14 @@ export const AutoCompleteSearch = () => {
 
     const cityService = new CityService();
 
+    const searchRequest = useContext(SearchContext);
+    useEffect(() => {
+        searchRequest.city = selectedCity == null ? null : selectedCity.name;
+    }, [selectedCity])
+
     useEffect(() => {
         cityService.getCities().then(data => {
             setCities(data)
-            console.log(data)
         });
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 

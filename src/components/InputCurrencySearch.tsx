@@ -1,9 +1,18 @@
-import React, {useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {InputNumber} from 'primereact/inputnumber';
 import {IInputNumberSearch} from "../interface/IInputNumberSearch";
+import {SearchContext} from "../context/ContextService";
+
+const initValue: number = 1000;
 
 export const InputCurrencySearch = (props: IInputNumberSearch) => {
-    const [value, setValue] = useState(0);
+    const [budgetValue, setBudgetValue] = useState(initValue);
+
+    const searchRequest = useContext(SearchContext);
+
+    useEffect(() => {
+        searchRequest.budget = budgetValue;
+    }, [budgetValue])
 
     return (
         <div>
@@ -11,9 +20,9 @@ export const InputCurrencySearch = (props: IInputNumberSearch) => {
                 <div className="grid p-fluid">
                     <div className="field col-12 md:col-3">
                         <h4>Сумма на путешествие</h4>
-                        <InputNumber inputId="stacked" value={value} onValueChange={(e: any) => setValue(e.value)}
+                        <InputNumber inputId="stacked" value={budgetValue} onValueChange={(e: any) => setBudgetValue(e.value)}
                                      showButtons mode="currency" currency="RUB"
-                                     step={props.step} min={0} max={props.max}/>
+                                     step={props.step} min={initValue} max={props.max}/>
                     </div>
                 </div>
             </div>
