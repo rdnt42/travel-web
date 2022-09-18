@@ -17,14 +17,11 @@ export const InputDaysSearch = (props: IInputNumberSearch) => {
     return (
         <div>
             <div className="card">
-                <div className="grid p-fluid">
-                    <div className="field col-12 md:col-3">
-                        <h4>Дней в путешествии</h4>
-                        <InputNumber inputId="minmax-buttons" value={daysValue} onValueChange={(e: any) => setDaysValue(e.value)}
-                                     showButtons mode="decimal"
-                                     step={props.step} min={initValue} max={props.max}/>
-                    </div>
-                </div>
+                <h4>Дней в путешествии</h4>
+                <InputNumber inputId="minmax-buttons" value={daysValue}
+                             onValueChange={(e: any) => setDaysValue(e.value)}
+                             showButtons mode="decimal"
+                             step={props.step} min={initValue} max={props.max}/>
             </div>
         </div>
     );

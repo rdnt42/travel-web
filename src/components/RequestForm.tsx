@@ -17,7 +17,7 @@ export const RequestForm = () => {
                     departureCity: searchRequest.city,
                     days: searchRequest.days,
                     maxCost: searchRequest.budget,
-                    comfortType: searchRequest.comfortType
+                    comfortTypeId: searchRequest.comfortType
                 }
             })
             .then(response => {
@@ -26,12 +26,22 @@ export const RequestForm = () => {
     }
 
     return (
-        <div>
-            <AutoCompleteSearch/>
-            <InputCurrencySearch max={500000} step={5000}/>
-            <InputDaysSearch max={30} step={1}/>
-            <DropDownComfort/>
-            <Button label="Поиск" className="p-button-raised" onClick={sendRequest}/>
+        <div className="p-fluid grid formgrid">
+            <div className="field md:col-3">
+                <AutoCompleteSearch/>
+            </div>
+            <div className="field md:col-3">
+                <InputCurrencySearch max={500000} step={5000}/>
+            </div>
+            <div className="field md:col-3">
+                <InputDaysSearch max={30} step={1}/>
+            </div>
+            <div className="field md:col-3">
+                <DropDownComfort/>
+            </div>
+            <div className="field md:col-3">
+                <Button label="Поиск" className="p-button-raised" onClick={sendRequest}/>
+            </div>
         </div>
     )
 }

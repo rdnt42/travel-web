@@ -17,14 +17,10 @@ export const InputCurrencySearch = (props: IInputNumberSearch) => {
     return (
         <div>
             <div className="card">
-                <div className="grid p-fluid">
-                    <div className="field col-12 md:col-3">
-                        <h4>Сумма на путешествие</h4>
-                        <InputNumber inputId="stacked" value={budgetValue} onValueChange={(e: any) => setBudgetValue(e.value)}
-                                     showButtons mode="currency" currency="RUB"
-                                     step={props.step} min={initValue} max={props.max}/>
-                    </div>
-                </div>
+                <h4>Сумма на путешествие</h4>
+                <InputNumber inputId="stacked" value={budgetValue} onValueChange={(e: any) => setBudgetValue(e.value)}
+                             showButtons mode="currency" currency="RUB"
+                             step={props.step} min={initValue} max={props.max}/>
             </div>
         </div>
     );
