@@ -1,6 +1,6 @@
 import {Button} from "primereact/button";
 import React, {useContext} from "react";
-import {SearchContext} from "../context/ContextService";
+import {ResponseContext, SearchContext} from "../context/ContextService";
 import {AutoCompleteSearch} from "./AutoCompleteSearch";
 import {InputCurrencySearch} from "./InputCurrencySearch";
 import {InputDaysSearch} from "./InputDaysSearch";
@@ -9,6 +9,7 @@ import axios from "axios";
 
 export const RequestForm = () => {
     const searchRequest = useContext(SearchContext);
+    const searchResponse = useContext(ResponseContext);
 
     const sendRequest = () => {
         axios.get("/server/travel/api/v1/travel_map",
@@ -21,7 +22,8 @@ export const RequestForm = () => {
                 }
             })
             .then(response => {
-                console.log(response);
+                searchResponse.response = response.data;
+                console.log(searchResponse.response?.routeResponses);
             })
     }
 
