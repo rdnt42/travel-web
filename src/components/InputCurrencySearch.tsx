@@ -3,7 +3,7 @@ import {InputNumber} from 'primereact/inputnumber';
 import {IInputNumberSearch} from "../interface/IInputNumberSearch";
 import {SearchContext} from "../context/ContextService";
 
-const initValue: number = 1000;
+const initValue: number = 10000;
 
 export const InputCurrencySearch = (props: IInputNumberSearch) => {
     const [budgetValue, setBudgetValue] = useState(initValue);
